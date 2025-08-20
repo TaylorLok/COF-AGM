@@ -86,16 +86,12 @@ This Laravel-based system provides a centralized platform for churches to share 
 ## 🛠️ Technical Specifications
 
 ### **Built With**
-- **Laravel 10**: Modern PHP framework for security and performance
-- **MySQL**: Reliable database for data integrity
-- **Bootstrap 5**: Responsive, mobile-friendly interface
-- **Secure File Storage**: Laravel's private disk system
-
-### **Requirements**
-- PHP 8.1 or higher
-- MySQL 5.7 or higher
-- Composer for dependency management
-- Web server (Apache/Nginx)
+- **Backend**: Laravel 12 (PHP 8.3+)
+- **Frontend**: React 18 + Inertia.js
+- **Database**: MySQL
+- **Authentication**: Laravel Breeze with Inertia
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
 
 ### **Supported File Types**
 - **Documents**: PDF, DOC, DOCX
