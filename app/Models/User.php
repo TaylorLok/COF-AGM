@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -68,5 +68,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Report::class, 'report_downloads')
                     ->withTimestamps()
                     ->withPivot('ip_address', 'user_agent');
+    }
+
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new ResetPassword($token));
     }
 }
