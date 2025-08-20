@@ -80,7 +80,7 @@ export default function Welcome({ auth })
                                     </div>
                                 </div>
 
-                                {!auth.user && (
+                                {/* {!auth.user && (
                                     <div className="flex justify-center space-x-4">
                                         <Link
                                             href={route('register')}
@@ -95,7 +95,7 @@ export default function Welcome({ auth })
                                             Log In
                                         </Link>
                                     </div>
-                                )}
+                                )} */}
 
                                 {auth.user && (
                                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
