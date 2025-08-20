@@ -6,12 +6,17 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Welcome page
 Route::get('/', function () {
-    return redirect()->route('reports.index');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+    ]);
 });
 
+// Redirect dashboard to reports
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect()->route('reports.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
