@@ -167,6 +167,84 @@ The system is designed to work with free hosting services, making it accessible 
 - **Cost Savings**: Reduce printing and distribution costs
 - **Environmental Impact**: Go paperless for AGM documentation
 
+## 🧪 Testing
+
+This application includes comprehensive test coverage to ensure reliability and functionality.
+
+### **Test Coverage**
+
+#### **Feature Tests**
+- **Authentication Tests**: Login, registration, password reset functionality
+- **Profile Management**: User profile updates and account deletion
+- **Report Management**: File upload, download, and admin permissions
+- **Admin Features**: Report statistics, exports, and access control
+
+#### **Unit Tests**
+- **Report Model**: File size formatting, download counting, relationships
+- **Report Downloadability**: File existence validation and download permissions
+
+### **Running Tests**
+
+#### **Run All Tests**
+```bash
+php artisan test
+```
+
+#### **Run Specific Test Suites**
+
+**Feature Tests Only:**
+```bash
+php artisan test tests/Feature/
+```
+
+**Unit Tests Only:**
+```bash
+php artisan test tests/Unit/
+```
+
+#### **Run Individual Test Files**
+
+**Report Functionality:**
+```bash
+php artisan test tests/Feature/ReportTest.php
+```
+
+**Profile Management:**
+```bash
+php artisan test tests/Feature/ProfileTest.php
+```
+
+**Authentication:**
+```bash
+php artisan test tests/Feature/Auth/AuthenticationTest.php
+```
+
+**Registration:**
+```bash
+php artisan test tests/Feature/Auth/RegistrationTest.php
+```
+
+**Password Reset:**
+```bash
+php artisan test tests/Feature/Auth/PasswordResetTest.php
+```
+
+**Report Downloadability:**
+```bash
+php artisan test tests/Unit/ReportDownloadabilityTest.php
+```
+
+#### **Run Specific Test Methods**
+```bash
+php artisan test --filter test_admin_can_store_report
+```
+
+### **Test Database**
+Tests use an in-memory SQLite database by default. No setup required - tests are isolated and don't affect your main database.
+
+### **Continuous Integration**
+All tests are designed to run consistently across different environments, making them perfect for CI/CD pipelines.
+
 ---
 
 *This system helps churches maintain transparency, improve member engagement, and ensure everyone has access to important AGM information while providing administrators with the tools they need to track participation and maintain accurate records.*

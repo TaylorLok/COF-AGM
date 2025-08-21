@@ -17,7 +17,7 @@ Route::get('/', function () {
 // Redirect dashboard to reports
 Route::get('/dashboard', function () {
     return redirect()->route('reports.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     // Reports
