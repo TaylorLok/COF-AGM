@@ -119,7 +119,7 @@ export default function Welcome({ auth })
                         <br />
                         AGM Management System - Secure, Simple, Effective by <strong>Taylor Lokombe</strong>
                         <br />
-                        <span>Contact: taylorcpt1@gmail.com</span>
+                        <span>Contact: taylorcpt1712@gmail.com</span>
                     </footer>
                 </div>
             </div>
