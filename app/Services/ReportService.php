@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Report;
 use App\Models\ReportDownload;
+use App\Models\ReportView;
 use App\Models\User;
 use App\Contracts\ReportInterface;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ReportService implements ReportInterface
 {
     public function getAllReports(): Collection
     {
-        return Report::withCount('downloads')
+        return Report::withCount(['downloads', 'views'])
             ->orderBy('created_at', 'desc')
             ->get();
     }
@@ -113,6 +114,33 @@ class ReportService implements ReportInterface
         }, $filename, [
             'Content-Type' => 'text/csv',
         ]);
+    }
+
+    public function trackView(Report $report, Request $request): void
+    {
+        ReportView::updateOrCreate([
+            'user_id' => auth()->id(),
+            'report_id' => $report->id,
+        ], [
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+        ]);
+    }
+
+    public function serveFile(Report $report)
+    {
+        if (!Storage::disk('private')->exists($report->file_path)) {
+            abort(404);
+        }
+
+        return Storage::disk('private')->response(
+            $report->file_path,
+            $report->original_filename,
+            [
+                'Content-Type' => $report->mime_type,
+                'Content-Disposition' => 'inline; filename="' . $report->original_filename . '"',
+            ]
+        );
     }
 
     public function deleteReport(Report $report): void

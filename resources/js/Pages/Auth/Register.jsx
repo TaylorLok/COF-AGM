@@ -28,7 +28,7 @@ export default function Register()
             <Head title="Register" />
 
             <div className="mb-6 text-center">
-                <h2 className="text-2xl font-bold text-gray-900">Join Our Church Community</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Join Community of Faith</h2>
                 <p className="mt-2 text-gray-600">Register to access AGM reports and documents</p>
             </div>
 

@@ -51,6 +51,21 @@ class ReportController extends Controller
         return $this->reportService->downloadReport($report, $request);
     }
 
+    public function view(Report $report): InertiaResponse
+    {
+        $this->reportService->trackView($report, request());
+        
+        return Inertia::render('Reports/View', [
+            'report' => $report->load('downloads'),
+            'fileUrl' => route('reports.serve', $report->id),
+        ]);
+    }
+
+    public function serve(Report $report)
+    {
+        return $this->reportService->serveFile($report);
+    }
+
     public function stats(Report $report): InertiaResponse
     {
         if (!auth()->user()->isAdmin()) {

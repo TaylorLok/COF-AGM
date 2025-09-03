@@ -62,9 +62,21 @@ class User extends Authenticatable
         return $this->hasMany(ReportDownload::class);
     }
 
+    public function reportViews(): HasMany
+    {
+        return $this->hasMany(ReportView::class);
+    }
+
     public function downloadedReports(): BelongsToMany
     {
         return $this->belongsToMany(Report::class, 'report_downloads')
+                    ->withTimestamps()
+                    ->withPivot('ip_address', 'user_agent');
+    }
+
+    public function viewedReports(): BelongsToMany
+    {
+        return $this->belongsToMany(Report::class, 'report_views')
                     ->withTimestamps()
                     ->withPivot('ip_address', 'user_agent');
     }

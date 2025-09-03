@@ -28,7 +28,7 @@ export default function Login({ status, canResetPassword })
             <Head title="Log in" />
 
             <div className="mb-6 text-center">
-                <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Welcome</h2>
                 <p className="mt-2 text-gray-600">Sign in to access your AGM reports</p>
             </div>
 

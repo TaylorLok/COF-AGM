@@ -22,16 +22,28 @@ class Report extends Model
         'description'
     ];
 
-    protected $appends = ['file_size_human', 'total_downloads', 'unique_downloads'];
+    protected $appends = ['file_size_human', 'total_downloads', 'unique_downloads', 'total_views', 'unique_views'];
 
     public function downloads(): HasMany
     {
         return $this->hasMany(ReportDownload::class);
     }
 
+    public function views(): HasMany
+    {
+        return $this->hasMany(ReportView::class);
+    }
+
     public function downloadedByUsers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'report_downloads')
+                    ->withTimestamps()
+                    ->withPivot('ip_address', 'user_agent');
+    }
+
+    public function viewedByUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'report_views')
                     ->withTimestamps()
                     ->withPivot('ip_address', 'user_agent');
     }
@@ -56,5 +68,15 @@ class Report extends Model
     public function getUniqueDownloadsAttribute(): int
     {
         return $this->downloads()->distinct('user_id')->count('user_id');
+    }
+
+    public function getTotalViewsAttribute(): int
+    {
+        return $this->views()->count();
+    }
+
+    public function getUniqueViewsAttribute(): int
+    {
+        return $this->views()->distinct('user_id')->count('user_id');
     }
 }

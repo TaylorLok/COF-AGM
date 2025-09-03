@@ -6,6 +6,8 @@ import
     TrashIcon,
     ChartBarIcon,
     PlusIcon,
+    EyeIcon,
+    UsersIcon,
 } from '@heroicons/react/24/outline';
 
 export default function Index({ auth, reports, canCreate, flash })
@@ -26,15 +28,26 @@ export default function Index({ auth, reports, canCreate, flash })
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">
                         AGM Reports
                     </h2>
-                    {canCreate && (
-                        <Link
-                            href={route('reports.create')}
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
-                        >
-                            <PlusIcon className="w-5 h-5 mr-2" />
-                            Upload Report
-                        </Link>
-                    )}
+                    <div className="flex space-x-3">
+                        {canCreate && (
+                            <>
+                                <a
+                                    href={route('admin.users.export')}
+                                    className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
+                                >
+                                    <UsersIcon className="w-5 h-5 mr-2" />
+                                    Export Users
+                                </a>
+                                <Link
+                                    href={route('reports.create')}
+                                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center"
+                                >
+                                    <PlusIcon className="w-5 h-5 mr-2" />
+                                    Upload Report
+                                </Link>
+                            </>
+                        )}
+                    </div>
                 </div>
             }
         >
@@ -64,6 +77,11 @@ export default function Index({ auth, reports, canCreate, flash })
                                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                     Downloads
                                                 </th>
+                                                {auth.user.is_admin && (
+                                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Views
+                                                    </th>
+                                                )}
                                                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                     Actions
                                                 </th>
@@ -81,7 +99,21 @@ export default function Index({ auth, reports, canCreate, flash })
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                         {report.downloads_count}
                                                     </td>
+                                                    {auth.user.is_admin && (
+                                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            {report.views_count}
+                                                        </td>
+                                                    )}
                                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                                                        {/* View */}
+                                                        <Link
+                                                            href={route('reports.view', report.id)}
+                                                            className="text-green-600 hover:text-green-900 inline-flex items-center"
+                                                        >
+                                                            <EyeIcon className="w-5 h-5 mr-1" />
+                                                            View
+                                                        </Link>
+
                                                         {/* Download */}
                                                         <a
                                                             href={route('reports.download', report.id)}
