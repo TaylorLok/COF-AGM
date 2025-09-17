@@ -80,23 +80,21 @@ export default function Welcome({ auth })
                                     </div>
                                 </div>
 
-                                {/* {!auth.user && (
-                                    <div className="flex justify-center space-x-4">
-                                        <Link
-                                            href={route('register')}
-                                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg"
-                                        >
-                                            Register Now
-                                        </Link>
-                                        <Link
-                                            href={route('login')}
-                                            className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-lg text-lg"
-                                        >
-                                            Log In
-                                        </Link>
-                                    </div>
-                                )} */}
-
+                                {/* AGM Registration Call to Action */}
+                                <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg mb-6">
+                                    <h3 className="text-xl font-semibold text-orange-900 mb-2">
+                                        📅 Register for the Annual General Meeting
+                                    </h3>
+                                    <p className="text-orange-800 mb-4">
+                                        Join us for our upcoming AGM. Register to secure your spot and choose between in-person or virtual attendance.
+                                    </p>
+                                    <Link
+                                        href={route('agm.register')}
+                                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg inline-block"
+                                    >
+                                        Register for AGM
+                                    </Link>
+                                </div>
                                 {auth.user && (
                                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
                                         Welcome back, {auth.user.name}! Ready to access your AGM reports?

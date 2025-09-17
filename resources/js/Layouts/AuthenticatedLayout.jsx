@@ -28,9 +28,14 @@ export default function Authenticated({ user, header, children })
                                     Reports
                                 </NavLink>
                                 {user.is_admin && (
-                                    <NavLink href={route('reports.create')} active={route().current('reports.create')}>
-                                        Upload Report
-                                    </NavLink>
+                                    <>
+                                        <NavLink href={route('reports.create')} active={route().current('reports.create')}>
+                                            Upload Report
+                                        </NavLink>
+                                        <NavLink href={route('agm.index')} active={route().current('agm.*')}>
+                                            AGM Registrations
+                                        </NavLink>
+                                    </>
                                 )}
                             </div>
                         </div>
@@ -109,9 +114,14 @@ export default function Authenticated({ user, header, children })
                             Reports
                         </ResponsiveNavLink>
                         {user.is_admin && (
-                            <ResponsiveNavLink href={route('reports.create')} active={route().current('reports.create')}>
-                                Upload Report
-                            </ResponsiveNavLink>
+                            <>
+                                <ResponsiveNavLink href={route('reports.create')} active={route().current('reports.create')}>
+                                    Upload Report
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink href={route('agm.index')} active={route().current('agm.*')}>
+                                    AGM Registrations
+                                </ResponsiveNavLink>
+                            </>
                         )}
                     </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgmRegistrationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
@@ -13,12 +14,17 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
-});
+})->name('welcome');
 
 // Redirect dashboard to reports
 Route::get('/dashboard', function () {
     return redirect()->route('reports.index');
 })->middleware(['auth'])->name('dashboard');
+
+// AGM Registration routes (public)
+Route::get('/agm/register', [AgmRegistrationController::class, 'create'])->name('agm.register');
+Route::post('/agm/register', [AgmRegistrationController::class, 'store'])->name('agm.store');
+Route::get('/agm/registration-success', [AgmRegistrationController::class, 'success'])->name('agm.success');
 
 Route::middleware('auth')->group(function () {
     // Reports
@@ -34,6 +40,10 @@ Route::middleware('auth')->group(function () {
 
     // Admin Users Export
     Route::get('/admin/users/export', [UserController::class, 'exportAllUsers'])->name('admin.users.export');
+
+    // AGM Registrations (admin only)
+    Route::get('/admin/agm-registrations', [AgmRegistrationController::class, 'index'])->name('agm.index');
+    Route::get('/admin/agm-registrations/export', [AgmRegistrationController::class, 'export'])->name('agm.export');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
