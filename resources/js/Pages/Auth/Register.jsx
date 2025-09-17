@@ -1,12 +1,14 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
+import PasswordInput from '@/Components/PasswordInput';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register()
-{
+{           
+    
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         surname: '',
@@ -81,37 +83,36 @@ export default function Register()
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                {/* Password and Confirm Password - Side by Side */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    <div>
-                        <InputLabel htmlFor="password" value="Password" />
-                        <TextInput
-                            id="password"
-                            type="password"
-                            name="password"
-                            value={data.password}
-                            className="mt-1 block w-full"
-                            autoComplete="new-password"
-                            onChange={(e) => setData('password', e.target.value)}
-                            required
-                        />
-                        <InputError message={errors.password} className="mt-2" />
-                    </div>
+                <div className="mt-4">
+                    <InputLabel htmlFor="password" value="Password" />
 
-                    <div>
-                        <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
-                        <TextInput
-                            id="password_confirmation"
-                            type="password"
-                            name="password_confirmation"
-                            value={data.password_confirmation}
-                            className="mt-1 block w-full"
-                            autoComplete="new-password"
-                            onChange={(e) => setData('password_confirmation', e.target.value)}
-                            required
-                        />
-                        <InputError message={errors.password_confirmation} className="mt-2" />
-                    </div>
+                    <PasswordInput
+                        id="password"
+                        name="password"
+                        value={data.password}
+                        className="mt-1 block w-full"
+                        autoComplete="new-password"
+                        onChange={(e) => setData('password', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.password} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
+
+                    <PasswordInput
+                        id="password_confirmation"
+                        name="password_confirmation"
+                        value={data.password_confirmation}
+                        className="mt-1 block w-full"
+                        autoComplete="new-password"
+                        onChange={(e) => setData('password_confirmation', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
