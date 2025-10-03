@@ -1,3 +1,5 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
+import Footer from '@/Components/Footer';
 import { Head, Link } from '@inertiajs/react';
 
 export default function Welcome({ auth })
@@ -9,7 +11,7 @@ export default function Welcome({ auth })
                 <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header className="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                         <div className="flex lg:justify-center lg:col-start-2">
-                            <h1 className="text-3xl font-bold text-gray-900">Church AGM System</h1>
+                            <ApplicationLogo className="h-32 w-auto" />
                         </div>
                         <nav className="-mx-3 flex flex-1 justify-end">
                             {auth.user ? (
@@ -112,13 +114,7 @@ export default function Welcome({ auth })
                         </div>
                     </main>
 
-                    <footer className="py-16 text-center text-sm text-black">
-                        Community of Faith Church
-                        <br />
-                        AGM Management System - Secure, Simple, Effective by <strong>Taylor Lokombe</strong>
-                        <br />
-                        <span>Contact: taylorcpt1712@gmail.com</span>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>

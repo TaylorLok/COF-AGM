@@ -8,10 +8,10 @@
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.png') }}">
-        <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/cof-logo_new.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/cof-logo_new.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/cof-logo_new.png') }}">
+        <link rel="shortcut icon" href="{{ asset('images/cof-logo_new.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

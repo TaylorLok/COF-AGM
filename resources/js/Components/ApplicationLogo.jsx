@@ -1,4 +1,4 @@
-import logoImage from '../../images/cof_logo_three.png';
+import logoImage from '../../images/cof-logo_new.png';
 
 export default function ApplicationLogo(props)
 {
@@ -6,7 +6,6 @@ export default function ApplicationLogo(props)
     return (
         <img
             {...rest}
-            //src="/images/cof_logo_three.png"
             src={logoImage}
             alt="Community of Faith Logo"
             className={className}
